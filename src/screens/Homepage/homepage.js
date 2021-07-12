@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Text, View, Image, TouchableOpacity, FlatList} from 'react-native';
+import {Text, View, Image, TouchableOpacity, FlatList, ScrollView} from 'react-native';
 import {CustomHeader, CustomModal} from '../../common/components';
 import {settings} from '../../assets/homepage';
 import _ from 'lodash';
@@ -99,7 +99,7 @@ function Homepage({}) {
   );
 
   return (
-    <View style={styles.container}>
+    <View style={{flex: 1}}>
       <CustomModal
         isVisible={visible}
         buttonTextAgree="Okay"
@@ -110,8 +110,8 @@ function Homepage({}) {
         message="This feature is under construction"
       />
       <CustomHeader leftContent rightContent />
-      <View style={styles.subContainer}>
-      <FlatList data={datas} renderItem={renderCards}/>
+      <View style={styles.container}>
+      <FlatList data={datas} renderItem={renderCards} initialNumToRender={5} style={{paddingTop: 16}}/>
       </View>
     </View>
   );

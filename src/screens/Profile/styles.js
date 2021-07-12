@@ -32,4 +32,5 @@ export default StyleSheet.create({
   underlineTab: {
     backgroundColor: 'gray',
   },
+  renderImageContainer: {flex: 1, flexWrap: 'wrap', flexDirection: 'row'}
 });

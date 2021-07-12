@@ -2,7 +2,6 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   container: {flex: 1},
-  subContainer: {backgroundColor: 'white', paddingVertical: 16},
   cardHeaderContainer: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Text, View, Image, ScrollView, TouchableOpacity, Dimensions} from 'react-native';
-import {Container, TabHeading, Tabs, Tab, Header} from 'native-base';
+import {Container, TabHeading, Tabs, Tab} from 'native-base';
 import {
   CustomHeader,
   UnderConstruction,
@@ -16,7 +16,7 @@ const photos =
 function Profile({}) {
   const [datas, setDatas] = useState([]);
   const [visible, setVisible] = useState(false);
-  const { width, height } = Dimensions.get('screen');
+  const { width } = Dimensions.get('screen');
 
   useEffect(() => {
     fetch(photos)
@@ -88,7 +88,7 @@ function Profile({}) {
                 </TabHeading>
               }
               style={[styles.bg, {marginBottom: 16}]}>
-              <View style={{flex: 1, flexWrap: 'wrap', flexDirection: 'row'}}>
+              <View style={styles.renderImageContainer}>
                 {datas.map(data => renderImage(data))}
               </View>
             </Tab>
