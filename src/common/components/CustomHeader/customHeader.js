@@ -2,7 +2,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
-import _ from 'lodash';
 import {Header} from 'native-base';
 import styles from './styles';
 import {CustomModal} from '..';
