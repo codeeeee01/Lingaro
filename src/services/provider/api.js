@@ -45,7 +45,7 @@ const KEY = env.KEY;
 
 export const photosAPI = async () => {
   axios.get(`${URL}/photos/?client_id=${KEY}`).then(response => {
-    console.log('asd');
+    // console.log('asd');
   });
   // fetch('https://google.com').then(res => {
   //   return res.json().then(

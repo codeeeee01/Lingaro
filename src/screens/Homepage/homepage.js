@@ -22,13 +22,20 @@ function Homepage({}) {
   const [pressHeart, setPressHeart] = useState(false);
   const [visible, setVisible] = useState(false);
   const [datas, setDatas] = useState([]);
+  const message = 'We have reached 50 retries per hour';
 
   useEffect(() => {
-    fetch(photos)
-      .then(response => response.json())
-      .then(json => setDatas(json))
-      .catch(error => alert(error));
+    getPhotos()
   }, []);
+  
+  const getPhotos = async () => {
+    try {
+      const data = await fetch(photos).then(response => response.json());
+      setDatas(data);
+    } catch (error) {
+      alert(message);
+    }
+  }
 
   const pressLike = () => {
     setPressHeart(!pressHeart);
@@ -36,7 +43,6 @@ function Homepage({}) {
 
   const renderCards = item => (
     <View key={item.user.id}>
-      {console.log(item)}
       <View style={styles.cardHeaderContainer}>
         <View style={styles.cardProfileContainer}>
           <Image
