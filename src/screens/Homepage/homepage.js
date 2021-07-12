@@ -42,7 +42,7 @@ function Homepage({}) {
   };
 
   const renderCards = item => (
-    <View key={item.user.id}>
+    <View key={item.id}>
       <View style={styles.cardHeaderContainer}>
         <View style={styles.cardProfileContainer}>
           <Image

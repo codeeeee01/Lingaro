@@ -25,7 +25,7 @@ function Profile({}) {
   }, []);
 
   const renderImage = item => (
-    <View key={item.user.id}>
+    <View key={item.id}>
       <Image
         source={{uri: item.urls.small}}
         style={{width: 138, height: 138}}
