@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View, Image, ScrollView, TouchableOpacity} from 'react-native';
+import {Text, View, Image, ScrollView, TouchableOpacity, Dimensions} from 'react-native';
 import {Container, TabHeading, Tabs, Tab, Header} from 'native-base';
 import {
   CustomHeader,
@@ -16,6 +16,7 @@ const photos =
 function Profile({}) {
   const [datas, setDatas] = useState([]);
   const [visible, setVisible] = useState(false);
+  const { width, height } = Dimensions.get('screen');
 
   useEffect(() => {
     fetch(photos)
@@ -28,13 +29,13 @@ function Profile({}) {
     <View key={item.id}>
       <Image
         source={{uri: item.urls.small}}
-        style={{width: 138, height: 138}}
+        style={{width: width / 3, height: width / 3}}
       />
     </View>
   );
 
   return (
-    <View style={styles.container}>
+    <Container style={styles.container}>
       <CustomModal
         isVisible={visible}
         buttonTextAgree="Okay"
@@ -45,7 +46,7 @@ function Profile({}) {
         message="This feature is under construction"
       />
       <CustomHeader middleContent rightContent={false} />
-      <ScrollView style={styles.scrollContainer} stickyHeaderIndices={[1]}>
+      <ScrollView style={styles.scrollContainer}>
         <View style={styles.marginProfile}>
           <View style={styles.headerContainer}>
             <View style={styles.imageWidth}>
@@ -79,8 +80,6 @@ function Profile({}) {
             <Text style={styles.editLabel}>Edit Profile</Text>
           </TouchableOpacity>
         </View>
-        <Container>
-          <Header hasTabs style={styles.bg} />
           <Tabs tabBarUnderlineStyle={styles.underlineTab}>
             <Tab
               heading={
@@ -88,8 +87,8 @@ function Profile({}) {
                   <Image source={grid} style={styles.iconSize} />
                 </TabHeading>
               }
-              style={styles.bg}>
-              <View style={{flexWrap: 'wrap', flexDirection: 'row'}}>
+              style={[styles.bg, {marginBottom: 16}]}>
+              <View style={{flex: 1, flexWrap: 'wrap', flexDirection: 'row'}}>
                 {datas.map(data => renderImage(data))}
               </View>
             </Tab>
@@ -104,9 +103,8 @@ function Profile({}) {
               </View>
             </Tab>
           </Tabs>
-        </Container>
       </ScrollView>
-    </View>
+    </Container>
   );
 }
 

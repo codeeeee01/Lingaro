@@ -1,11 +1,9 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
-  container: {flex: 1, backgroundColor: 'white'},
+  container: {backgroundColor: 'white'},
   scrollContainer: {
-    flexDirection: 'column',
-    marginTop: 0,
-    paddingTop: 16,
+    paddingTop: 16
   },
   headerContainer: {flexDirection: 'row'},
   imageWidth: {width: '30%'},
