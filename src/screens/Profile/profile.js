@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import {Container, TabHeading, Tabs, Tab} from 'native-base';
+import {Container, TabHeading, Tabs, Tab, DefaultTabBar} from 'native-base';
 import {
   CustomHeader,
   UnderConstruction,
@@ -32,6 +32,11 @@ function Profile({}) {
       .then(json => setDatas(json))
       .catch(error => alert(error));
   }, []);
+
+  const renderTabBar = props => {
+    props.tabStyle = Object.create(props.tabStyle);
+    return <DefaultTabBar {...props} />;
+  };
 
   const renderImage = item => (
     <View key={item.id}>
@@ -88,7 +93,9 @@ function Profile({}) {
             <Text style={styles.editLabel}>Edit Profile</Text>
           </TouchableOpacity>
         </View>
-        <Tabs tabBarUnderlineStyle={styles.underlineTab}>
+        <Tabs
+          tabBarUnderlineStyle={styles.underlineTab}
+          renderTabBar={renderTabBar}>
           <Tab
             heading={
               <TabHeading style={styles.bg}>

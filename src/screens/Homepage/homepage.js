@@ -1,6 +1,13 @@
 /* eslint-disable no-alert */
 import React, {useState, useEffect} from 'react';
-import {Text, View, Image, TouchableOpacity, FlatList} from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  FlatList,
+  LogBox,
+} from 'react-native';
 import {CustomHeader, CustomModal} from '../../common/components';
 import {settings} from '../../assets/homepage';
 import _ from 'lodash';
@@ -14,6 +21,8 @@ import {
 } from '../../assets/homepage';
 import styles from './styles';
 import {numberWithCommas} from '../../common/utils/numberFormat';
+
+LogBox.ignoreAllLogs();
 
 const photos =
   'https://api.unsplash.com/photos/?client_id=28cfioXQXaqSdo-7vmxBzhSTT0HsaKXvoSJRv7o_-2g&per_page=20';
