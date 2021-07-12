@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   container: {backgroundColor: 'white'},
   scrollContainer: {
-    paddingTop: 16
+    paddingTop: 16,
   },
   headerContainer: {flexDirection: 'row'},
   imageWidth: {width: '30%'},
@@ -32,5 +32,6 @@ export default StyleSheet.create({
   underlineTab: {
     backgroundColor: 'gray',
   },
-  renderImageContainer: {flex: 1, flexWrap: 'wrap', flexDirection: 'row'}
+  renderImageContainer: {flex: 1, flexWrap: 'wrap', flexDirection: 'row'},
+  tabMargin: {marginBottom: 16},
 });

@@ -1,5 +1,13 @@
+/* eslint-disable no-alert */
 import React, {useEffect, useState} from 'react';
-import {Text, View, Image, ScrollView, TouchableOpacity, Dimensions} from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 import {Container, TabHeading, Tabs, Tab} from 'native-base';
 import {
   CustomHeader,
@@ -16,7 +24,7 @@ const photos =
 function Profile({}) {
   const [datas, setDatas] = useState([]);
   const [visible, setVisible] = useState(false);
-  const { width } = Dimensions.get('screen');
+  const {width} = Dimensions.get('screen');
 
   useEffect(() => {
     fetch(photos)
@@ -80,29 +88,29 @@ function Profile({}) {
             <Text style={styles.editLabel}>Edit Profile</Text>
           </TouchableOpacity>
         </View>
-          <Tabs tabBarUnderlineStyle={styles.underlineTab}>
-            <Tab
-              heading={
-                <TabHeading style={styles.bg}>
-                  <Image source={grid} style={styles.iconSize} />
-                </TabHeading>
-              }
-              style={[styles.bg, {marginBottom: 16}]}>
-              <View style={styles.renderImageContainer}>
-                {datas.map(data => renderImage(data))}
-              </View>
-            </Tab>
-            <Tab
-              heading={
-                <TabHeading style={styles.bg}>
-                  <Image source={photo} style={styles.iconSize} />
-                </TabHeading>
-              }>
-              <View style={styles.constructionContainer}>
-                <UnderConstruction />
-              </View>
-            </Tab>
-          </Tabs>
+        <Tabs tabBarUnderlineStyle={styles.underlineTab}>
+          <Tab
+            heading={
+              <TabHeading style={styles.bg}>
+                <Image source={grid} style={styles.iconSize} />
+              </TabHeading>
+            }
+            style={[styles.bg, styles.tabMargin]}>
+            <View style={styles.renderImageContainer}>
+              {datas.map(data => renderImage(data))}
+            </View>
+          </Tab>
+          <Tab
+            heading={
+              <TabHeading style={styles.bg}>
+                <Image source={photo} style={styles.iconSize} />
+              </TabHeading>
+            }>
+            <View style={styles.constructionContainer}>
+              <UnderConstruction />
+            </View>
+          </Tab>
+        </Tabs>
       </ScrollView>
     </Container>
   );

@@ -49,4 +49,5 @@ export default StyleSheet.create({
     marginBottom: 16,
   },
   labelComment: {fontWeight: 'normal'},
+  flatListPad: {paddingTop: 16},
 });

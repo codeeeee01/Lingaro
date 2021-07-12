@@ -1,5 +1,6 @@
+/* eslint-disable no-alert */
 import React, {useState, useEffect} from 'react';
-import {Text, View, Image, TouchableOpacity, FlatList, ScrollView} from 'react-native';
+import {Text, View, Image, TouchableOpacity, FlatList} from 'react-native';
 import {CustomHeader, CustomModal} from '../../common/components';
 import {settings} from '../../assets/homepage';
 import _ from 'lodash';
@@ -25,9 +26,9 @@ function Homepage({}) {
   const message = 'We have reached 50 retries per hour';
 
   useEffect(() => {
-    getPhotos()
+    getPhotos();
   }, []);
-  
+
   const getPhotos = async () => {
     try {
       const data = await fetch(photos).then(response => response.json());
@@ -35,7 +36,7 @@ function Homepage({}) {
     } catch (error) {
       alert(message);
     }
-  }
+  };
 
   const pressLike = () => {
     setPressHeart(!pressHeart);
@@ -99,7 +100,7 @@ function Homepage({}) {
   );
 
   return (
-    <View style={{flex: 1}}>
+    <View style={styles.container}>
       <CustomModal
         isVisible={visible}
         buttonTextAgree="Okay"
@@ -111,7 +112,12 @@ function Homepage({}) {
       />
       <CustomHeader leftContent rightContent />
       <View style={styles.container}>
-      <FlatList data={datas} renderItem={renderCards} initialNumToRender={5} style={{paddingTop: 16}}/>
+        <FlatList
+          data={datas}
+          renderItem={renderCards}
+          initialNumToRender={5}
+          style={styles.flatListPad}
+        />
       </View>
     </View>
   );
