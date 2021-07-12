@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {Text, View, ScrollView, Image, TouchableOpacity} from 'react-native';
 import {CustomHeader, CustomModal} from '../../common/components';
-import {connect} from 'react-redux';
 import {settings} from '../../assets/homepage';
 import _ from 'lodash';
-import homepageRequest from '../../common/redux/homepage/homepageReducer';
 import {
   heart,
   heartFill,
@@ -15,10 +13,9 @@ import {
 } from '../../assets/homepage';
 import styles from './styles';
 import {numberWithCommas} from '../../common/utils/numberFormat';
-// import {getPhotos} from '../../services/data.services';
 
 const photos =
-  'https://api.unsplash.com/photos/?client_id=28cfioXQXaqSdo-7vmxBzhSTT0HsaKXvoSJRv7o_-2g';
+  'https://api.unsplash.com/photos/?client_id=28cfioXQXaqSdo-7vmxBzhSTT0HsaKXvoSJRv7o_-2g&per_page=20';
 
 function Homepage({}) {
   const [saved, setSaved] = useState(false);
@@ -27,7 +24,6 @@ function Homepage({}) {
   const [datas, setDatas] = useState([]);
 
   useEffect(() => {
-    // getPhotos();
     fetch(photos)
       .then(response => response.json())
       .then(json => setDatas(json))
@@ -117,15 +113,4 @@ function Homepage({}) {
   );
 }
 
-const mapDispatchToProps = dispatch => {
-  // console.log('asd', dispatch);
-  return {getPhoto: () => dispatch(homepageRequest())};
-};
-
-const mapStateToProps = state => {
-  const {homepage} = state;
-  console.log('homepage', homepage);
-  return {homepage};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
+export default Homepage;

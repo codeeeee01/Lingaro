@@ -11,7 +11,7 @@ import avatar from '../../assets/avatar.png';
 import styles from './styles';
 
 const photos =
-  'https://api.unsplash.com/photos/?client_id=28cfioXQXaqSdo-7vmxBzhSTT0HsaKXvoSJRv7o_-2g';
+  'https://api.unsplash.com/photos/?client_id=28cfioXQXaqSdo-7vmxBzhSTT0HsaKXvoSJRv7o_-2g&per_page=20';
 
 function Profile({}) {
   const [datas, setDatas] = useState([]);
