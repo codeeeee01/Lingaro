@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Text, View, ScrollView, Image, TouchableOpacity} from 'react-native';
+import {Text, View, Image, TouchableOpacity, FlatList} from 'react-native';
 import {CustomHeader, CustomModal} from '../../common/components';
 import {settings} from '../../assets/homepage';
 import _ from 'lodash';
@@ -41,7 +41,7 @@ function Homepage({}) {
     setPressHeart(!pressHeart);
   };
 
-  const renderCards = item => (
+  const renderCards = ({item}) => (
     <View key={item.id}>
       <View style={styles.cardHeaderContainer}>
         <View style={styles.cardProfileContainer}>
@@ -110,11 +110,9 @@ function Homepage({}) {
         message="This feature is under construction"
       />
       <CustomHeader leftContent rightContent />
-      <ScrollView style={styles.container}>
-        <View style={styles.subContainer}>
-          {datas.map(data => renderCards(data))}
-        </View>
-      </ScrollView>
+      <View style={styles.subContainer}>
+      <FlatList data={datas} renderItem={renderCards}/>
+      </View>
     </View>
   );
 }
